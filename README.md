@@ -140,6 +140,75 @@ enum COPILOT_STATUS {
 }
 ```
 
+## Customization
+
+### Using built-in `<CopilotItem>` props
+
+```tsx
+<CopilotItem
+  title="Step Title"        // Title displayed at the top
+  buttonText="Got it"       // Custom next button text (default: "下一步")
+  canSkip={false}           // Hide the close/skip button (default: true)
+>
+  {/* Any custom content */}
+  <p>Your description here</p>
+  <img src="demo.png" alt="demo" />
+</CopilotItem>
+```
+
+### Fully custom tutorial UI
+
+Since `GroupSteps.steps[].item` accepts any `ReactNode`, you can replace `<CopilotItem>` entirely with your own component. Use `useCopilotManger()` to access all tutorial state and controls:
+
+```tsx
+import { useCopilotManger } from 'react-tutorial-copilot';
+
+function MyCustomItem() {
+  const {
+    target,           // The highlighted element (ReactNode)
+    targetLayout,     // { x, y, width, height } of the target
+    nextStep,
+    prevStep,
+    onFinish,
+    currentStepIndex,
+    totalSteps,
+  } = useCopilotManger();
+
+  if (!target) return null;
+
+  return (
+    <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)' }}>
+      {/* Render highlighted target */}
+      <div style={{
+        position: 'absolute',
+        top: targetLayout.y,
+        left: targetLayout.x,
+        width: targetLayout.width,
+        height: targetLayout.height,
+        pointerEvents: 'none',
+      }}>
+        {target}
+      </div>
+
+      {/* Your custom tooltip */}
+      <div className="my-tooltip">
+        <p>{currentStepIndex} / {totalSteps}</p>
+        <button onClick={prevStep}>Back</button>
+        <button onClick={nextStep}>Next</button>
+        <button onClick={() => onFinish()}>Skip</button>
+      </div>
+    </div>
+  );
+}
+
+// Usage
+registerCopilotSteps('onboarding', {
+  steps: [
+    { stepId: 'step_1', item: <MyCustomItem /> },
+  ],
+});
+```
+
 ## Platform Support
 
 | Platform | Support |
