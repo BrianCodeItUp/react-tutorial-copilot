@@ -1,4 +1,4 @@
-# react-copilot
+# react-tutorial-copilot
 
 A guided tutorial/copilot component for **React** and **React Native**. Highlight elements on your page and walk users through step-by-step onboarding flows.
 
@@ -6,10 +6,10 @@ A guided tutorial/copilot component for **React** and **React Native**. Highligh
 
 ```bash
 # npm
-npm install react-copilot
+npm install react-tutorial-copilot
 
 # yarn
-yarn add react-copilot
+yarn add react-tutorial-copilot
 ```
 
 ## Quick Start
@@ -20,7 +20,7 @@ import {
   Copilot,
   CopilotItem,
   useCopilotManger,
-} from 'react-copilot';
+} from 'react-tutorial-copilot';
 
 function App() {
   return (

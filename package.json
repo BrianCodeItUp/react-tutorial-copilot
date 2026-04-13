@@ -1,5 +1,5 @@
 {
-  "name": "react-copilot",
+  "name": "react-tutorial-copilot",
   "version": "1.1.0",
   "description": "A guided tutorial/copilot component for React and React Native",
   "main": "lib/commonjs/index.web",
@@ -26,7 +26,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-copilot-example",
+    "example": "yarn workspace react-tutorial-copilot-example",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",

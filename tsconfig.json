@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-copilot": ["./src/index"]
+      "react-tutorial-copilot": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
